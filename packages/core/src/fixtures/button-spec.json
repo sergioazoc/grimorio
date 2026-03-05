@@ -1,0 +1,62 @@
+{
+  "name": "Button",
+  "description": "A clickable button component",
+  "category": "actions",
+  "complexity": "moderate",
+  "props": [
+    {
+      "name": "variant",
+      "type": "string",
+      "required": false,
+      "description": "Visual style variant"
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "required": false,
+      "default": "md",
+      "description": "Button size"
+    },
+    { "name": "disabled", "type": "boolean", "required": false, "default": false },
+    { "name": "children", "type": "ReactNode", "required": true, "description": "Button content" }
+  ],
+  "variants": [
+    { "name": "variant", "values": ["primary", "secondary", "ghost", "destructive"] },
+    { "name": "size", "values": ["sm", "md", "lg"] }
+  ],
+  "defaultVariants": { "variant": "primary", "size": "md" },
+  "slots": [],
+  "anatomy": [
+    { "name": "root", "description": "The button element", "required": true },
+    { "name": "label", "description": "Text content area", "required": true },
+    { "name": "icon", "description": "Optional icon slot", "required": false }
+  ],
+  "tokenMapping": {
+    "root.background": "{color.primary}",
+    "root.background:hover": "{color.primary.hover}",
+    "root.background[variant=secondary]": "{color.secondary}",
+    "root.background[variant=ghost]": "{color.transparent}",
+    "root.background[variant=destructive]": "{color.destructive}",
+    "root.paddingInline[size=sm]": "{spacing.sm}",
+    "root.paddingInline[size=md]": "{spacing.md}",
+    "root.paddingInline[size=lg]": "{spacing.lg}",
+    "root.borderRadius": "{borderRadius.md}",
+    "label.color": "{color.primary.foreground}",
+    "label.fontFamily": "{fontFamily.sans}"
+  },
+  "states": ["hover", "focus", "active", "disabled"],
+  "events": [{ "name": "onClick", "description": "Fired when the button is clicked" }],
+  "dependencies": [],
+  "accessibility": {
+    "role": "button",
+    "ariaAttributes": ["aria-disabled", "aria-pressed"],
+    "keyboardInteractions": [
+      { "key": "Enter", "description": "Activates the button" },
+      { "key": "Space", "description": "Activates the button" }
+    ]
+  },
+  "guidelines": [
+    "Use primary variant for main actions",
+    "Use destructive variant for dangerous actions"
+  ]
+}

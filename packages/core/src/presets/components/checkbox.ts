@@ -1,0 +1,78 @@
+import type { ComponentPreset } from "../types.js";
+
+export const checkboxPreset: ComponentPreset = {
+  description: "A checkbox input for toggling a boolean value",
+  category: "forms",
+  complexity: "simple",
+  props: [
+    {
+      name: "checked",
+      type: "boolean",
+      required: false,
+      description: "Whether the checkbox is checked (controlled)",
+    },
+    {
+      name: "defaultChecked",
+      type: "boolean",
+      required: false,
+      description: "Default checked state (uncontrolled)",
+    },
+    {
+      name: "indeterminate",
+      type: "boolean",
+      required: false,
+      default: false,
+      description: "Whether the checkbox is in an indeterminate state",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      required: false,
+      default: false,
+      description: "Whether the checkbox is disabled",
+    },
+    {
+      name: "required",
+      type: "boolean",
+      required: false,
+      default: false,
+      description: "Whether the checkbox is required",
+    },
+    { name: "label", type: "string", required: true, description: "Label text for the checkbox" },
+  ],
+  variants: [{ name: "size", values: ["sm", "md", "lg"], description: "Checkbox size" }],
+  defaultVariants: { size: "md" },
+  slots: [],
+  anatomy: [
+    { name: "root", description: "Wrapper container", required: true },
+    { name: "control", description: "The checkbox control element", required: true },
+    { name: "indicator", description: "Check/indeterminate icon", required: true },
+    { name: "label", description: "Label text element", required: true },
+  ],
+  tokenMapping: {
+    "control.borderColor": "{color.border}",
+    "control.borderColor:checked": "{color.primary}",
+    "control.borderColor:focus": "{color.primary}",
+    "control.borderColor:disabled": "{color.muted}",
+    "control.background:checked": "{color.primary}",
+    "control.background:disabled": "{color.muted}",
+    "control.borderRadius": "{borderRadius.sm}",
+    "indicator.color": "{color.primary.foreground}",
+    "label.color": "{color.foreground}",
+    "label.color:disabled": "{color.muted.foreground}",
+    "label.fontFamily": "{fontFamily.sans}",
+  },
+  states: ["hover", "focus", "checked", "indeterminate", "disabled"],
+  events: [{ name: "onChange", description: "Fired when the checked state changes" }],
+  dependencies: [],
+  accessibility: {
+    role: "checkbox",
+    ariaAttributes: ["aria-checked", "aria-required", "aria-disabled", "aria-label"],
+    keyboardInteractions: [{ key: "Space", description: "Toggles the checkbox" }],
+  },
+  guidelines: [
+    "Always provide a visible label",
+    "Use indeterminate state for parent checkboxes with mixed child states",
+    "Group related checkboxes with a fieldset and legend",
+  ],
+};

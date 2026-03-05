@@ -1,0 +1,25 @@
+{
+  "name": "grimorio-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "grimorio-analyzers": "workspace:*",
+    "grimorio-core": "workspace:*",
+    "grimorio-validators": "workspace:*",
+    "zod": "catalog:"
+  }
+}

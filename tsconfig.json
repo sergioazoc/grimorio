@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "isolatedDeclarations": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "files": [],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/analyzers" },
+    { "path": "packages/validators" },
+
+    { "path": "packages/mcp" },
+    { "path": "packages/cli" },
+    { "path": "tsconfig.node.json" }
+  ]
+}

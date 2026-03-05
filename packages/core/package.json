@@ -1,0 +1,22 @@
+{
+  "name": "grimorio-core",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "zod": "catalog:",
+    "zod-to-json-schema": "^3.25.1"
+  }
+}

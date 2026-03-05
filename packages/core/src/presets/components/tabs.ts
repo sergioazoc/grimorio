@@ -1,0 +1,75 @@
+import type { ComponentPreset } from "../types.js";
+
+export const tabsPreset: ComponentPreset = {
+  description: "A tabbed interface for switching between content panels",
+  category: "navigation",
+  complexity: "complex",
+  props: [
+    {
+      name: "value",
+      type: "string",
+      required: false,
+      description: "Currently active tab (controlled)",
+    },
+    {
+      name: "defaultValue",
+      type: "string",
+      required: false,
+      description: "Default active tab (uncontrolled)",
+    },
+    { name: "children", type: "ReactNode", required: true, description: "Tab list and tab panels" },
+    {
+      name: "orientation",
+      type: "string",
+      required: false,
+      default: "horizontal",
+      description: "Tab layout direction",
+    },
+  ],
+  variants: [
+    { name: "variant", values: ["default", "pills", "underline"], description: "Tab style" },
+    { name: "orientation", values: ["horizontal", "vertical"], description: "Tab layout" },
+  ],
+  defaultVariants: { variant: "default", orientation: "horizontal" },
+  slots: [],
+  anatomy: [
+    { name: "root", description: "Tabs wrapper", required: true },
+    { name: "list", description: "Tab list container", required: true },
+    { name: "trigger", description: "Individual tab trigger", required: true },
+    { name: "content", description: "Tab panel content area", required: true },
+    { name: "indicator", description: "Active tab indicator", required: false },
+  ],
+  tokenMapping: {
+    "list.borderColor": "{color.border}",
+    "trigger.color": "{color.muted.foreground}",
+    "trigger.color:active": "{color.foreground}",
+    "trigger.color:hover": "{color.foreground}",
+    "trigger.fontFamily": "{fontFamily.sans}",
+    "trigger.fontSize": "{fontSize.sm}",
+    "trigger.paddingInline": "{spacing.md}",
+    "trigger.paddingBlock": "{spacing.sm}",
+    "indicator.background": "{color.primary}",
+    "content.paddingBlock": "{spacing.md}",
+  },
+  states: ["hover", "focus", "active"],
+  events: [{ name: "onChange", description: "Fired when the active tab changes" }],
+  dependencies: [],
+  accessibility: {
+    role: "tablist",
+    ariaAttributes: ["aria-selected", "aria-controls", "aria-labelledby"],
+    keyboardInteractions: [
+      { key: "ArrowRight", description: "Moves focus to the next tab (horizontal)" },
+      { key: "ArrowLeft", description: "Moves focus to the previous tab (horizontal)" },
+      { key: "ArrowDown", description: "Moves focus to the next tab (vertical)" },
+      { key: "ArrowUp", description: "Moves focus to the previous tab (vertical)" },
+      { key: "Home", description: "Moves focus to the first tab" },
+      { key: "End", description: "Moves focus to the last tab" },
+    ],
+  },
+  guidelines: [
+    "Use tabs for content at the same level of hierarchy",
+    "Keep tab labels short and descriptive",
+    "Ensure each tab panel has an accessible label via aria-labelledby",
+    "Do not use tabs for sequential steps — use a stepper instead",
+  ],
+};

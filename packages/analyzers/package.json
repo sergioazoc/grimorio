@@ -1,0 +1,24 @@
+{
+  "name": "grimorio-analyzers",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.5.29",
+    "grimorio-core": "workspace:*",
+    "oxc-parser": "^0.116.0",
+    "oxc-resolver": "^11.19.1"
+  }
+}

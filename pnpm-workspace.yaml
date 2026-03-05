@@ -1,0 +1,6 @@
+packages:
+  - "packages/*"
+  - "docs"
+
+catalog:
+  zod: ^4.3.6

@@ -1,0 +1,57 @@
+{
+  "name": "grimorio",
+  "version": "0.1.0",
+  "description": "Design system infrastructure CLI — analyze components, generate specs, validate implementations, and expose your design system via MCP",
+  "keywords": [
+    "cli",
+    "component-spec",
+    "design-system",
+    "design-tokens",
+    "mcp",
+    "react",
+    "validation",
+    "vue"
+  ],
+  "homepage": "https://github.com/sergioazoc/grimorio#readme",
+  "bugs": {
+    "url": "https://github.com/sergioazoc/grimorio/issues"
+  },
+  "license": "MIT",
+  "author": "Sergio Azócar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergioazoc/grimorio.git",
+    "directory": "packages/cli"
+  },
+  "bin": {
+    "grimorio": "./bin/grimorio.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "c12": "4.0.0-beta.3",
+    "citty": "^0.2.1",
+    "consola": "^3.4.2",
+    "grimorio-analyzers": "workspace:*",
+    "grimorio-core": "workspace:*",
+    "grimorio-mcp": "workspace:*",
+    "grimorio-validators": "workspace:*",
+    "tinyglobby": "^0.2.15",
+    "zod": "catalog:"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

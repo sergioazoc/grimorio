@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedDeclarations": false
+  },
+  "include": ["*.config.ts", "packages/*/tsdown.config.ts", "packages/*/vitest.config.ts"]
+}
