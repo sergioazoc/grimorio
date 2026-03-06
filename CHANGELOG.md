@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-03-06
+
 ### Changed
 
 - **Breaking**: Replaced `tokens: string[]` with `tokenMapping: Record<string, string>` mapping `part.property[:state][variant=value]` → `{token.path}` (W3C DTCG reference syntax)
