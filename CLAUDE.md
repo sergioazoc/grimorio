@@ -91,18 +91,17 @@ core
 
 ## CI/CD & Release
 
-Four GitHub Actions workflows in `.github/workflows/`:
+Three GitHub Actions workflows in `.github/workflows/`:
 
 - **ci.yml** — Runs on push to `main` and PRs to `main` or `release`. Runs build, test, lint, and format check.
 - **docs.yml** — Deploys VitePress docs to GitHub Pages on push to `main` when `docs/**` changes (+ manual trigger).
-- **release.yml** — Runs on push to `release`. First runs the full CI suite; then reads the version from `packages/cli/package.json`, creates a git tag `vX.Y.Z` and a GitHub Release (skips if the tag already exists).
-- **publish.yml** — Triggered by a GitHub Release being published. Builds, tests, and publishes the `grimorio` package to npm.
+- **release.yml** — Runs on push to `release`. First runs the full CI suite; then reads the version from `packages/cli/package.json`, creates a git tag `vX.Y.Z`, a GitHub Release, and publishes the `grimorio` package to npm (skips if the tag already exists).
 
 **Release flow:**
 
 1. Develop on `main` (CI runs on every push/PR).
 2. When ready to release: bump versions in `package.json` files and update `CHANGELOG.md` on `main`.
 3. Merge `main` → `release` (CI runs on the PR, then `release.yml` runs on merge).
-4. `release.yml` creates the tag + GitHub Release → triggers `publish.yml` → publishes to npm.
+4. `release.yml` creates the tag + GitHub Release + publishes to npm.
 
 The `release` branch is the release gate. If the version hasn't changed (tag already exists), the release job is a no-op.

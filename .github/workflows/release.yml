@@ -32,8 +32,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
 
       - name: Get version from package.json
         id: version
@@ -57,3 +66,13 @@ jobs:
           git tag "$VERSION"
           git push origin "$VERSION"
           gh release create "$VERSION" --title "$VERSION" --generate-notes
+
+      - run: pnpm install
+
+      - run: pnpm build
+
+      - name: Publish to npm
+        if: steps.tag_check.outputs.exists == 'false'
+        run: pnpm --filter grimorio publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
