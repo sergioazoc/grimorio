@@ -1,6 +1,6 @@
 {
   "name": "grimorio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Design system infrastructure CLI — analyze components, generate specs, validate implementations, and expose your design system via MCP",
   "keywords": [
     "cli",
