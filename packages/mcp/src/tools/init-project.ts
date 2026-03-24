@@ -15,10 +15,11 @@ export function registerInitProject(server: McpServer): void {
     async ({ path: projectRoot }) => {
       const created: string[] = [];
 
-      const configPath = join(projectRoot, "grimorio.config.ts");
-      if (!existsSync(configPath)) {
+      const configPathMts = join(projectRoot, "grimorio.config.mts");
+      const configPathTs = join(projectRoot, "grimorio.config.ts");
+      if (!existsSync(configPathMts) && !existsSync(configPathTs)) {
         await writeFile(
-          configPath,
+          configPathMts,
           `export default {
   specs: './specs/**/*.json',
   tokens: './tokens.json',
@@ -29,7 +30,7 @@ export function registerInitProject(server: McpServer): void {
 }
 `,
         );
-        created.push("grimorio.config.ts");
+        created.push("grimorio.config.mts");
       }
 
       const specsDir = join(projectRoot, "specs");

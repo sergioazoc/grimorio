@@ -24,11 +24,11 @@ describe("init command", () => {
     }
   });
 
-  it("should create grimorio.config.ts", async () => {
+  it("should create grimorio.config.mts", async () => {
     const { default: initCommand } = await import("./init.js");
     await initCommand.run!({ args: {} } as any);
 
-    const configPath = join(TEST_DIR, "grimorio.config.ts");
+    const configPath = join(TEST_DIR, "grimorio.config.mts");
     expect(existsSync(configPath)).toBe(true);
 
     const content = await readFile(configPath, "utf-8");
@@ -66,8 +66,8 @@ describe("init command", () => {
     expect(content).toEqual(getDefaultTokens());
   });
 
-  it("should not overwrite existing config", async () => {
-    const configPath = join(TEST_DIR, "grimorio.config.ts");
+  it("should not overwrite existing .mts config", async () => {
+    const configPath = join(TEST_DIR, "grimorio.config.mts");
     const { writeFile } = await import("node:fs/promises");
     await writeFile(configPath, "// existing config\n");
 
@@ -76,5 +76,19 @@ describe("init command", () => {
 
     const content = await readFile(configPath, "utf-8");
     expect(content).toBe("// existing config\n");
+  });
+
+  it("should not overwrite existing .ts config", async () => {
+    const configPath = join(TEST_DIR, "grimorio.config.ts");
+    const { writeFile } = await import("node:fs/promises");
+    await writeFile(configPath, "// existing ts config\n");
+
+    const { default: initCommand } = await import("./init.js");
+    await initCommand.run!({ args: {} } as any);
+
+    // Should not create .mts when .ts exists
+    expect(existsSync(join(TEST_DIR, "grimorio.config.mts"))).toBe(false);
+    const content = await readFile(configPath, "utf-8");
+    expect(content).toBe("// existing ts config\n");
   });
 });

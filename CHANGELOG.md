@@ -5,6 +5,21 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-03-24
+
+### Fixed
+
+- Fix npm install failing with 404 for internal workspace packages (grimorio-core, grimorio-analyzers, etc.) by bundling them into the CLI dist
+- Fix `grimorio.config.ts` failing to load in CJS projects — init now generates `.mts` (works in both CJS and ESM), added `jiti` for c12 compat
+- Fix `consola.info` in `mcp:serve` writing to stdout, corrupting the MCP JSON-RPC transport
+- Fix tsgo typecheck failure with newer `@typescript/native-preview` by adding `types: ["node"]` to root tsconfig
+
+### Changed
+
+- Relax Node.js engine requirement from `>=24` to `^20.19.0 || >=22.12.0` (supports Node 20 LTS and 22 LTS)
+- Replace deprecated `noExternal` with `deps.alwaysBundle` in CLI tsdown config
+- Init command now respects existing `grimorio.config.ts` when checking whether to create `grimorio.config.mts`
+
 ## [0.1.1] - 2026-03-06
 
 ### Changed

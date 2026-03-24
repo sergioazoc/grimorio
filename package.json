@@ -14,13 +14,13 @@
     "typecheck": "tsgo --noEmit -p packages/core/tsconfig.json && tsgo --noEmit -p packages/analyzers/tsconfig.json && tsgo --noEmit -p packages/validators/tsconfig.json && tsgo --noEmit -p packages/mcp/tsconfig.json && tsgo --noEmit -p packages/cli/tsconfig.json"
   },
   "devDependencies": {
-    "@types/node": "^25.3.3",
-    "@typescript/native-preview": "7.0.0-dev.20260304.1",
-    "oxfmt": "^0.36.0",
-    "oxlint": "^1.51.0",
-    "oxlint-tsgolint": "^0.16.0",
-    "tsdown": "^0.20.3",
-    "vitest": "^4.0.18"
+    "@types/node": "^25.5.0",
+    "@typescript/native-preview": "7.0.0-dev.20260323.1",
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.56.0",
+    "oxlint-tsgolint": "^0.17.2",
+    "tsdown": "^0.21.4",
+    "vitest": "^4.1.1"
   },
   "engines": {
     "node": ">=24"

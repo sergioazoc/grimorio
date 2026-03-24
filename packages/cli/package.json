@@ -1,6 +1,6 @@
 {
   "name": "grimorio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Design system infrastructure CLI — analyze components, generate specs, validate implementations, and expose your design system via MCP",
   "keywords": [
     "cli",
@@ -41,17 +41,25 @@
     "build": "tsdown"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@vue/compiler-sfc": "^3.5.29",
     "c12": "4.0.0-beta.3",
     "citty": "^0.2.1",
     "consola": "^3.4.2",
+    "jiti": "^2.6.1",
+    "oxc-parser": "^0.116.0",
+    "oxc-resolver": "^11.19.1",
+    "tinyglobby": "^0.2.15",
+    "zod": "catalog:",
+    "zod-to-json-schema": "^3.25.1"
+  },
+  "devDependencies": {
     "grimorio-analyzers": "workspace:*",
     "grimorio-core": "workspace:*",
     "grimorio-mcp": "workspace:*",
-    "grimorio-validators": "workspace:*",
-    "tinyglobby": "^0.2.15",
-    "zod": "catalog:"
+    "grimorio-validators": "workspace:*"
   },
   "engines": {
-    "node": ">=24"
+    "node": "^20.19.0 || >=22.12.0"
   }
 }

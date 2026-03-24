@@ -1,5 +1,4 @@
 import { defineCommand } from "citty";
-import consola from "consola";
 
 export default defineCommand({
   meta: {
@@ -11,7 +10,7 @@ export default defineCommand({
     const { resolveConfig } = await import("../config.js");
 
     const config = await resolveConfig();
-    consola.info("Starting MCP server...");
+    console.error("Starting MCP server...");
     await startServer({
       ...config,
       tokens: typeof config.tokens === "string" ? config.tokens : undefined,

@@ -14,10 +14,11 @@ export default defineCommand({
     const cwd = process.cwd();
 
     // Create config file
-    const configPath = join(cwd, "grimorio.config.ts");
-    if (!existsSync(configPath)) {
+    const configPathMts = join(cwd, "grimorio.config.mts");
+    const configPathTs = join(cwd, "grimorio.config.ts");
+    if (!existsSync(configPathMts) && !existsSync(configPathTs)) {
       await writeFile(
-        configPath,
+        configPathMts,
         `export default {
   specs: './specs/**/*.json',
   tokens: './tokens.json',
@@ -28,9 +29,9 @@ export default defineCommand({
 }
 `,
       );
-      consola.success("Created grimorio.config.ts");
+      consola.success("Created grimorio.config.mts");
     } else {
-      consola.info("grimorio.config.ts already exists");
+      consola.info("grimorio config already exists");
     }
 
     // Create specs directory
